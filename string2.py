@@ -18,12 +18,12 @@
 
 
 def verbing(s):
-  if len(s) >= 3:
-    if s[-3:] != 'ing': s = s + 'ing'
-    else: s = s + 'ly'
-  return s
-
-
+    if len(s) >= 3:
+        if s[-3:] != 'ing':
+            s = s + 'ing'
+        else:
+            s = s + 'ly'
+    return s
 
 
 # E. not_bad
@@ -35,12 +35,12 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    han = s.find('not')
-    solo = s.find('bad')
+    indexbad = s.find("bad")
+    indexnot = s.find("not")
+    if(indexbad != -1 & indexnot != -1):
+        if(indexnot < indexbad):
+            return s[:indexnot] + "good" + s[indexbad+3:]
 
-    if solo > han:
-        s = s.replace(s[han:(solo+3)], 'good')
-    
     return s
 
 
@@ -52,13 +52,13 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-  a_middle = len(a) / 2
-  b_middle = len(b) / 2
-  if len(a) % 2 == 1: 
-    a_middle = a_middle + 1
-  if len(b) % 2 == 1:
-    b_middle = b_middle + 1 
-  return a[:a_middle] + b[:b_middle] + a[a_middle:] + b[b_middle:]
+    new_a = len(a) / 2
+    new_b = len(b) / 2
+    if len(a) % 2 == 1:
+        new_a += 1
+    if len(b) % 2 == 1:
+        new_b += 1
+    return a[:new_a] + b[:new_b] + a[new_a:] + b[new_b:]
 
 
 # Provided simple test() function used in main() to print
